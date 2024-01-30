@@ -17,7 +17,23 @@ public final class LetterFactory {
      * @return BaseShape containing the letter A
      */
     public static BaseShape create_A()  {
-        return null;
+        BaseShape leftRect = new Rectangle(stripeThickness, maxHeight);
+        BaseShape rightRect = new Rectangle(stripeThickness, maxHeight);
+        BaseShape middleRect = new Rectangle(halfMaxWidth + 10, stripeThickness);
+
+
+
+        leftRect.rotate(leftRect.getCoords(), Math.toRadians(20));
+        rightRect.rotate(rightRect.getCoords(), Math.toRadians(-20));
+        leftRect.translate(leftRect.getCoords(), new Point2d(0.0, 0.0));
+        rightRect.translate(rightRect.getCoords(), new Point2d(maxWidth, 0.0));
+        middleRect.translate(middleRect.getCoords(), new Point2d(halfMaxWidth, 0.0));
+        BaseShape A = new BaseShape();
+        A.add(leftRect);
+        A.add(rightRect);
+        A.add(middleRect);
+
+        return A;
     }
 
     /** TODO
@@ -25,7 +41,12 @@ public final class LetterFactory {
      * @return BaseShape containing the letter B
      */
     public static BaseShape create_B() {
-        return null;
+        BaseShape O = new Ellipse(maxWidth,maxHeight);
+        BaseShape removeMiddle = new Ellipse(maxWidth - stripeThickness * 2, maxHeight - stripeThickness * 2);
+        O.remove(removeMiddle);
+        O.translate(O.getCoords(), new Point2d(halfMaxWidth, 0.0));
+
+        return O;
     }
 
     /** TODO
@@ -33,7 +54,16 @@ public final class LetterFactory {
      * @return BaseShape containing the letter C
      */
     public static BaseShape create_C() {
-        return null;
+        BaseShape C = new Ellipse(maxWidth, maxHeight);
+        BaseShape middleCircle = new Ellipse(maxWidth - stripeThickness*2, maxHeight - stripeThickness*2);
+        C.remove(middleCircle);
+        BaseShape removeRect = new Rectangle(stripeThickness*1.5, halfMaxHeight);
+        removeRect.translate(removeRect.getCoords(), new Point2d(halfMaxWidth - 10, 0.0));
+
+        C.remove(removeRect);
+
+
+        return C;
     }
 
     /** TODO
@@ -41,7 +71,21 @@ public final class LetterFactory {
      * @return BaseShape containing the letter E
      */
     public static BaseShape create_E() {
-        return null;
+        BaseShape E = new BaseShape();
+        BaseShape skeletonRect = new Rectangle(stripeThickness, maxHeight);
+        BaseShape highRect = new Rectangle(maxWidth, stripeThickness);
+        BaseShape middleRect = new Rectangle(maxWidth, stripeThickness);
+        BaseShape lowRect = new Rectangle(maxWidth, stripeThickness);
+
+        highRect.translate(highRect.getCoords(), new Point2d(halfMaxWidth, -halfMaxHeight + 10));
+        middleRect.translate(middleRect.getCoords(), new Point2d(halfMaxWidth, 0.0));
+        lowRect.translate(lowRect.getCoords(), new Point2d(halfMaxWidth, halfMaxHeight - 10));
+
+        E.add(skeletonRect);
+        E.add(middleRect);
+        E.add(lowRect);
+        E.add(highRect);
+        return E;
     }
 
     /** TODO
@@ -49,7 +93,17 @@ public final class LetterFactory {
      * @return BaseShape containing the letter H
      */
     public static BaseShape create_H() {
-        return null;
+        BaseShape H = new BaseShape();
+        BaseShape leftRect = new Rectangle(stripeThickness, maxHeight);
+        BaseShape middleRect = new Rectangle(maxWidth, stripeThickness);
+        middleRect.translate(middleRect.getCoords(), new Point2d(halfMaxWidth, 0.0));
+        BaseShape rightRect = new Rectangle(stripeThickness, maxHeight);
+        rightRect.translate(rightRect.getCoords(), new Point2d(maxWidth, 0.0));
+
+        H.add(rightRect);
+        H.add(middleRect);
+        H.add(leftRect);
+        return H;
     }
 
     /** TODO
@@ -57,7 +111,21 @@ public final class LetterFactory {
      * @return BaseShape containing the letter N
      */
     public static BaseShape create_N() {
-        return null;
+        BaseShape N = new BaseShape();
+        BaseShape leftRect = new Rectangle(stripeThickness, maxHeight);
+        BaseShape rightRect = new Rectangle(stripeThickness, maxHeight);
+        BaseShape middleRect = new Rectangle(stripeThickness, maxHeight);
+
+        middleRect.rotate(middleRect.getCoords(), Math.toRadians(-20));
+        middleRect.translate(middleRect.getCoords(), new Point2d(halfMaxWidth, 0.0));
+        rightRect.translate(rightRect.getCoords(), new Point2d(maxWidth - 5, 0.0));
+
+        N.add(middleRect);
+        N.add(rightRect);
+        N.add(leftRect);
+
+
+        return N;
     }
 
     /** TODO
@@ -65,7 +133,12 @@ public final class LetterFactory {
      * @return BaseShape containing the letter O
      */
     public static BaseShape create_O() {
-        return null;
+        BaseShape O = new Ellipse(maxWidth,maxHeight);
+        BaseShape removeMiddle = new Ellipse(maxWidth - stripeThickness * 2, maxHeight - stripeThickness * 2);
+        O.remove(removeMiddle);
+        O.translate(O.getCoords(), new Point2d(halfMaxWidth, 0.0));
+
+        return O;
     }
 
 }
