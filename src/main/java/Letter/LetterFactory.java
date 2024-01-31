@@ -41,12 +41,24 @@ public final class LetterFactory {
      * @return BaseShape containing the letter B
      */
     public static BaseShape create_B() {
-        BaseShape O = new Ellipse(maxWidth,maxHeight);
-        BaseShape removeMiddle = new Ellipse(maxWidth - stripeThickness * 2, maxHeight - stripeThickness * 2);
-        O.remove(removeMiddle);
-        O.translate(O.getCoords(), new Point2d(halfMaxWidth, 0.0));
+        BaseShape B = new BaseShape();
+        BaseShape topCircle = new Circle(halfMaxHeight);
+        BaseShape bottomCircle = new Circle(halfMaxHeight);
+        BaseShape middleRemove2 = new Circle(halfMaxHeight/2 + 20);
+        BaseShape middleRemove = new Circle(halfMaxHeight/2 + 20);
+        BaseShape skeleton = new Rectangle(stripeThickness, maxHeight);
 
-        return O;
+        bottomCircle.translate(bottomCircle.getCoords(), new Point2d(0.0, halfMaxHeight));
+        middleRemove2.translate(middleRemove2.getCoords(), new Point2d(0.0, halfMaxHeight));
+        skeleton.translate(skeleton.getCoords(), new Point2d(-halfMaxWidth + 2, halfMaxHeight/2));
+
+        B.add(topCircle);
+        B.add(bottomCircle);
+        B.remove(middleRemove);
+        B.remove(middleRemove2);
+        B.add(skeleton);
+
+        return B;
     }
 
     /** TODO
